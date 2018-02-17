@@ -1,0 +1,28 @@
+version: '3.3'
+
+services:
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: thepass
+      POSTGRES_USER: task1
+    ports:
+      - 8081:5432
+
+  rabbit:
+    image: rabbitmq
+    hostname: myrabbit
+    ports:
+      - 8085:5672
+
+  consumer:
+    build: ./consumer
+
+  producer:
+    build: ./producer
+
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080

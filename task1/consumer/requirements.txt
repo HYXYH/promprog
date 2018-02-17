@@ -1,0 +1,5 @@
+click==6.7
+freeze==1.0.10
+pika==0.11.2
+psycopg2==2.7.4
+six==1.11.0
