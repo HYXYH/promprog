@@ -1,0 +1,55 @@
+{% load widget_tweaks %}
+{% load static %}
+<html>
+	<head>    
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="{% static 'todolist/style.css' %}">
+		<script src="{% static 'todolist/jquery-1.11.0.min.js' %}"></script>
+
+		<script src="{% static 'todolist/tasks.js' %}"></script>
+	</head>
+	<body>
+
+		<form class="pure-form"  method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+			<center>
+				<div class="heading"> 
+					 <fieldset>
+                         {% render_field task_form.text rows="1" placeholder="пиши сюда короч" %}
+						<button id="creator" type="submit" class="pure-button pure-button-primary">  <i class="fa fa-plus"></i>  плюсик</button>
+				 	</fieldset>
+				</div>
+			</center>
+		</form>
+
+		<center>
+			<form class="pure-form">
+					 <fieldset id="Reminders" class="pure-group">
+                         {% for obj in object_list %}
+                            <input type="text" class="pure-input-1-2 reminder" value="{{ obj.text }}"   disabled>
+						    <i class="fa fa-check-square-o fa-lg checker"></i>
+
+                         {% endfor %}
+{##}
+{##}
+{#       					 <input type="text" class="pure-input-1-2 reminder" value="Проснуться"   disabled>#}
+{#						 <i class="fa fa-trash-o fa-lg deleter"> </i>#}
+{#						 <i class="fa fa-check-square-o fa-lg checker"></i>#}
+{##}
+{#       					 <input type="text" class="pure-input-1-2 reminder" value="Позавтракать" >#}
+{#						 <i class="fa fa-trash-o fa-lg deleter"> </i>#}
+{#						 <i class="fa fa-square-o fa-lg checker"></i>#}
+{##}
+{#        				 <input type="text" class="pure-input-1-2 reminder" value="Захватить мир" disabled>#}
+{#						 <i class="fa fa-trash-o fa-lg deleter"> </i>#}
+{#						 <i class="fa fa-square-o fa-lg checker"></i>#}
+{##}
+{#       					 <input type="text" class="pure-input-1-2 reminder" value="Слетать на марс" disabled>#}
+{#						 <i class="fa fa-trash-o fa-lg deleter"> </i>#}
+{#						 <i class="fa fa-square-o fa-lg checker"></i>#}
+
+   					 </fieldset>
+			</form>
+		</center>
+	</body>
+</html>
